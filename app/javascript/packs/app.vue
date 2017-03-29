@@ -16,7 +16,7 @@
             <item v-for="item in doneList" :key="item.id" :item="item" />
           </ul>
           <div class="panel-footer">
-            <input type="text" class="form-control" placeholder="Type in new item..." v-model="newItem">  
+            <input type="text" class="form-control" placeholder="Type in new item..." v-model="newItem" @keyup.enter="add">  
             <a href="#" class="btn btn-large btn-block btn-primary" @click="add">Add item!</a>
           </div>
         </div>   
