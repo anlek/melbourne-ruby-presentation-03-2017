@@ -1,6 +1,6 @@
 <template>
   <li class="list-group-item">
-    <label class="form-check-label">
+    <label :class="{ 'form-check-label': true, 'done': item.checked }">
       <input class="form-check-input" type="checkbox" value="" v-model="item.checked">
       {{ item.name }}
     </label>
