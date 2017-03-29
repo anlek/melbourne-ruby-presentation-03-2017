@@ -7,23 +7,13 @@
             <h2 class="panel-title">Too Doo List ({{ todoCount }})</h2>
           </div>
           <ul class="list-group">
-            <li class="list-group-item" v-for="item in todoList">
-              <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" value="" v-model="item.checked">
-                {{ item.name }}
-              </label>
-            </li>
+            <item v-for="item in todoList" :key="item.id" :item="item" />
           </ul>
           <div class="panel-heading">
             <h3 class="panel-title">Done List ({{ doneCount }})</h3>
           </div>
           <ul class="list-group">
-            <li class="list-group-item" v-for="item in doneList">
-              <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" value="" v-model="item.checked">
-                {{ item.name }}
-              </label>
-            </li>
+            <item v-for="item in doneList" :key="item.id" :item="item" />
           </ul>
           <div class="panel-footer">
             <input type="text" class="form-control" placeholder="Type in new item..." v-model="message">  
@@ -36,7 +26,11 @@
 </template>
 
 <script>
-module.exports = {
+import item from './todoItem'
+export default {
+  components: { 
+    item 
+  },
   data: function () {
     return {
       message: "Hello Vue!",
@@ -83,14 +77,6 @@ module.exports = {
   margin-top: 25px;
 }
 .panel-heading{
-  text-align: center;
-}
-.done {
-  text-decoration: line-through;
-  font-weight: 400;
-}
-p {
-  font-size: 2em;
   text-align: center;
 }
 </style>
