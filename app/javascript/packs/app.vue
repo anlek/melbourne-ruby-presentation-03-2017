@@ -4,7 +4,7 @@
       <div class="col-sm-8 col-sm-offset-2">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h2 class="panel-title">Too Doo List (5)</h2>
+            <h2 class="panel-title">Too Doo List ({{ todoCount }})</h2>
           </div>
           <ul class="list-group">
             <li class="list-group-item" v-for="item in todoList">
@@ -15,7 +15,7 @@
             </li>
           </ul>
           <div class="panel-heading">
-            <h3 class="panel-title">Done List (2)</h3>
+            <h3 class="panel-title">Done List ({{ doneCount }})</h3>
           </div>
           <ul class="list-group">
             <li class="list-group-item" v-for="item in doneList">
@@ -26,8 +26,8 @@
             </li>
           </ul>
           <div class="panel-footer">
-            <input type="text" class="form-control" placeholder="Type in new item...">  
-            <a href="#" class="btn btn-large btn-block btn-primary">Add item</a>
+            <input type="text" class="form-control" placeholder="Type in new item..." v-model="message">  
+            <a href="#" class="btn btn-large btn-block btn-primary" @click="add">Add item!</a>
           </div>
         </div>   
       </div>
@@ -57,10 +57,22 @@ module.exports = {
         return !item.checked
       })
     },
+    todoCount () {
+      return this.todoList.length
+    },
     doneList () {
       return this.list.filter(item => {
         return item.checked
       })
+    },
+    doneCount() {
+      return this.doneList.length
+    }
+  },
+  methods: {
+    add () {
+      this.list.push({name: this.message, checked: false})
+      this.message = ""
     }
   }
 }
