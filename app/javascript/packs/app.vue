@@ -16,7 +16,7 @@
             <item v-for="item in doneList" :key="item.id" :item="item" />
           </ul>
           <div class="panel-footer">
-            <input type="text" class="form-control" placeholder="Type in new item..." v-model="message">  
+            <input type="text" class="form-control" placeholder="Type in new item..." v-model="newItem">  
             <a href="#" class="btn btn-large btn-block btn-primary" @click="add">Add item!</a>
           </div>
         </div>   
@@ -33,7 +33,7 @@ export default {
   },
   data: function () {
     return {
-      message: "Hello Vue!",
+      newItem: '',
       list: [
         { name: "Build",    checked: false },
         { name: "A",        checked: false },
@@ -65,8 +65,8 @@ export default {
   },
   methods: {
     add () {
-      this.list.push({name: this.message, checked: false})
-      this.message = ""
+      this.list.push({name: this.newItem, checked: false})
+      this.newItem = ""
     }
   }
 }
