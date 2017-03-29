@@ -7,34 +7,10 @@
             <h2 class="panel-title">Too Doo List (5)</h2>
           </div>
           <ul class="list-group">
-            <li class="list-group-item">
+            <li class="list-group-item" v-for="item in todoList">
               <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" value="">
-                Build
-              </label>
-            </li>
-            <li class="list-group-item">
-              <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" value="">
-                A
-              </label>
-            </li>
-            <li class="list-group-item">
-              <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" value="">
-                Todo
-              </label>
-            </li>
-            <li class="list-group-item">
-              <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" value="">
-                List
-              </label>
-            </li>
-            <li class="list-group-item">
-              <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" value="">
-                {{ message }}
+                <input class="form-check-input" type="checkbox" value="" v-model="item.checked">
+                {{ item.name }}
               </label>
             </li>
           </ul>
@@ -42,16 +18,10 @@
             <h3 class="panel-title">Done List (2)</h3>
           </div>
           <ul class="list-group">
-            <li class="list-group-item">
-              <label class="form-check-label done">
-                <input class="form-check-input" type="checkbox" value="" checked>
-                Allow
-              </label>
-            </li>
-            <li class="list-group-item">
-              <label class="form-check-label done">
-                <input class="form-check-input" type="checkbox" value="" checked>
-                Complete
+            <li class="list-group-item" v-for="item in doneList">
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" value="" v-model="item.checked">
+                {{ item.name }}
               </label>
             </li>
           </ul>
@@ -69,7 +39,28 @@
 module.exports = {
   data: function () {
     return {
-      message: "Hello Vue!"
+      message: "Hello Vue!",
+      list: [
+        { name: "Build",    checked: false },
+        { name: "A",        checked: false },
+        { name: "Todo",     checked: false },
+        { name: "List",     checked: false },
+        { name: "Allow",    checked: true  },
+        { name: "Complete", checked: true  },
+        { name: "All",      checked: true  }
+      ]
+    }
+  },
+  computed: {
+    todoList () {
+      return this.list.filter(item => {
+        return !item.checked
+      })
+    },
+    doneList () {
+      return this.list.filter(item => {
+        return item.checked
+      })
     }
   }
 }
