@@ -16,8 +16,8 @@
             <item v-for="item in doneList" :key="item.id" :item="item" @delete="removeItem" />
           </ul>
           <div class="panel-footer">
-            <input type="text" class="form-control" placeholder="Type in new item..." v-model="newItem" @keyup.enter="add">  
-            <a href="#" class="btn btn-large btn-block btn-primary" @click="add">Add item!</a>
+            <input type="text" class="form-control" placeholder="Type in new item..." v-model="newItem" @keyup.enter="addItem">  
+            <a href="#" class="btn btn-large btn-block btn-primary" @click="addItem">Add item!</a>
           </div>
         </div>   
       </div>
@@ -64,7 +64,7 @@ export default {
     }
   },
   methods: {
-    add () {
+    addItem () {
       this.list.push({name: this.newItem, checked: false})
       this.newItem = ""
     },
