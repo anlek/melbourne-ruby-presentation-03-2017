@@ -5,11 +5,18 @@ This code is a demo application for a lighting talk done at [Melbourne Ruby](htt
 * Rails 5.1.rc1 (with [webpacker](https://github.com/rails/webpacker))
 * Vue.js 2.2.6
 
+### Setup
+Run the following commands (_in terminal_):
+
+* `bundle install`
+* `yarn install`
+
 ### How to use
-You need to run the following commands (_each in its own terminal_):
+To use the app, you will need to run the following commands (_each in its own terminal_):
 
 * `bin/webpack-dev-server`
 * `bin/rails server`
+* visit [http://localhost:3000/](http://localhost:3000/)
 
 Learn more about [webpacker](https://github.com/rails/webpacker) in Rails 5.1
 
