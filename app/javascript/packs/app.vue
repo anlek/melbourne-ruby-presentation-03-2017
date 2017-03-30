@@ -7,13 +7,13 @@
             <h2 class="panel-title">Too Doo List ({{ todoCount }})</h2>
           </div>
           <ul class="list-group">
-            <item v-for="item in todoList" :key="item.id" :item="item" />
+            <item v-for="item in todoList" :key="item.id" :item="item" @delete="removeItem" />
           </ul>
           <div class="panel-heading">
             <h3 class="panel-title">Done List ({{ doneCount }})</h3>
           </div>
           <ul class="list-group">
-            <item v-for="item in doneList" :key="item.id" :item="item" />
+            <item v-for="item in doneList" :key="item.id" :item="item" @delete="removeItem" />
           </ul>
           <div class="panel-footer">
             <input type="text" class="form-control" placeholder="Type in new item..." v-model="newItem" @keyup.enter="add">  
@@ -67,6 +67,12 @@ export default {
     add () {
       this.list.push({name: this.newItem, checked: false})
       this.newItem = ""
+    },
+    removeItem(item) {
+      let idx = this.list.indexOf(item)
+      if (idx > -1) {
+        this.list.splice(idx, 1)
+      }
     }
   }
 }
